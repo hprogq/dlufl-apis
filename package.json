@@ -1,0 +1,28 @@
+{
+  "name": "dlufl-cntd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/cheerio": "^0.22.35",
+    "@types/node": "^20.14.9",
+    "@types/tough-cookie": "^4.0.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.3",
+    "axios-cookiejar-support": "^5.0.2",
+    "cheerio": "1.0.0-rc.12",
+    "cli-table3": "^0.6.5",
+    "dotenv": "^16.4.5",
+    "tough-cookie": "^4.1.4"
+  }
+}
