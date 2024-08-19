@@ -1,15 +1,16 @@
-# get-seat
+# dlufl-apis
+
+Some APIs in DLUFL.
 
 To install dependencies:
 
 ```bash
-bun install
+npm install
 ```
 
 To run:
 
 ```bash
-bun run index.js
+npm build
+npm start
 ```
-
-This project was created using `bun init` in bun v1.1.21. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.

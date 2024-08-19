@@ -18,11 +18,13 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@types/inquirer": "^9.0.7",
     "axios": "^1.7.3",
     "axios-cookiejar-support": "^5.0.2",
     "cheerio": "1.0.0-rc.12",
     "cli-table3": "^0.6.5",
     "dotenv": "^16.4.5",
+    "inquirer": "^10.1.8",
     "tough-cookie": "^4.1.4"
   }
 }

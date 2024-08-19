@@ -42,7 +42,7 @@ export class NeusoftDcp {
             if (response.data.USER_NAME) {
                 return response.data;
             } else {
-                throw new Error("错误: 获取用户类型失败。");
+                console.error("错误: 获取用户类型失败。");
             }
         } catch (error: any) {
             throw new Error("错误: 获取用户信息失败: " + error.message);
@@ -61,7 +61,7 @@ export class NeusoftDcp {
             if (Array.isArray(response.data) && response.data.some((item: any) => typeof item === 'object' && item !== null)) {
                 return response.data[0];
             } else {
-                throw new Error("错误: 获取用户类型失败。");
+                console.error("错误: 获取用户类型失败。");
             }
         } catch (error: any) {
             throw new Error("错误: 获取用户信息失败: " + error.message);
@@ -84,7 +84,7 @@ export class NeusoftDcp {
             if (Array.isArray(response.data)) {
                 return response.data;
             } else {
-                throw new Error("错误: 获取课程表失败。");
+                console.error("错误: 获取课程表失败。");
             }
         } catch (error: any) {
             throw new Error("错误: 获取课程表失败: " + error.message);
@@ -96,7 +96,11 @@ export class NeusoftDcp {
         return ranges.some(([start, end]) => week >= start && week <= (end || start));
     }
 
-    formatClassSchedule(schedule: any[], title: string = "课程表", asTable: boolean = true, learnWeek: number) {
+    formatClassSchedule(schedule: any[] | undefined, title: string = "课程表", asTable: boolean = true, learnWeek: number) {
+        if (schedule === undefined || schedule.length === 0) {
+            console.log("错误: 未找到课程信息。");
+            return;
+        }
         const weekDays = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"];
         const timeSlots: { [key: string]: string } = {
             "1": "1-2节",
@@ -273,13 +277,5 @@ export class NeusoftDcp {
 
         const schedule = await this.getClassSchedule(schoolYear, semester, learnWeek);
         this.formatClassSchedule(schedule, `\n${schoolYear} 学年第${semester}学期 校历第${learnWeek}周 课程表`, true, learnWeek);
-    }
-
-    getFormattedTime() {
-        const now = new Date();
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
-        const seconds = now.getSeconds();
-        return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
     }
 }
